@@ -2,8 +2,7 @@ FROM rust:bookworm as builder
 RUN apt update && apt install -y libssl-dev
 WORKDIR /home/rust/src
 COPY . .
-ARG FEATURES
-RUN cargo build --locked --release
+RUN cargo build --release
 RUN mkdir -p build-out/
 RUN cp target/release/rathole build-out/
 
